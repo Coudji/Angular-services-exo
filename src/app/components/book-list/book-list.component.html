@@ -1,0 +1,26 @@
+<section>
+    <h2>Ma collection de livre</h2>
+    @for (book of books; track book.id) {
+        <div class="info-bar" [class.selected]="book.id === selectedId">
+            <p (click)="select(book)">
+                {{book.title}}, {{book.author}}
+            </p>
+            <p>
+                <button (click)="openDeleteConfirm(book.id)">
+                    Supprimer
+                </button>
+            </p>
+        </div>
+
+        @if (idToDelete === book.id) {
+            <div>
+                <button (click)="confirmDelete()">
+                    Confirmer
+                </button>
+                <button (click)="cancelDelete()">
+                    Annuler
+                </button>
+            </div>
+        }
+    }
+</section>
